@@ -6,7 +6,7 @@ const scoreboardUrl = `https://cdn.nba.com/static/json/liveData/scoreboard/today
 
 
 export async function GET(req: NextRequest) {
-    const res = await fetch(scoreboardUrl, { cache: 'no-store' });
+    const res = await fetch(scoreboardUrl, { next: { revalidate: 10 } });
     const data = await res.json();
     return NextResponse.json(data);
 }

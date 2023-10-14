@@ -17,11 +17,11 @@ import useSWR from 'swr';
     
   export const ScheduleBar = () => {
     const { data, isLoading } = useSWR('/api/scoreboard', async () => {
-      const res = await fetch('https://nba-courtside.vercel.app/api/scoreboard', { cache: 'no-store' });
+      const res = await fetch('/api/scoreboard', { cache: 'no-store' });
       return await res.json();
     },
     {
-      refreshInterval: 1000 * 30        // update boxscore data every 30 seconds
+      refreshInterval: 1000 * 10        // update boxscore data every 30 seconds
     })
     console.log('inside schedulebar');
     console.log('inside schedulebar, data is ', data?.scoreboard?.games)
